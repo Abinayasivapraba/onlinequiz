@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="row justify-content-lg-center">
+        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-6 mx-auto my-5">
+            <form #loginForm="ngForm" class="login-input-form">
+                <div>
+                    <div class="form-group">
+                        <label for=""> Username</label>
+                        <input #username="ngModel" class="form-control" [(ngModel)]="loginInfo.username" placeholder="Enter your user name"
+                            type="text" name="username" maxlength="20" required>
+                        <div></div>
+                        <div *ngIf="username.invalid && (username.dirty || username.touched) && username.errors">
+                            <div class="invalid-feedbackn">
+                                <i class="fa fa-times"></i>
+                            </div>
+                            <div *ngIf="username.errors?.required" class="invalid-feedback">
+                                Enter
+                                the username</div>
+                            <div *ngIf="username.errors?.maxlength" class="invalid-feedback">
+                                Should
+                                be maximum of 5 characters</div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="form-group">
+                        <label for="">Password</label>
+                        <input #password="ngModel" class="form-control" [(ngModel)]="loginInfo.password" placeholder="*********"
+                            type="password" name="password" minlength="1" required>
+                        <div *ngIf="password.invalid && (password.dirty || password.touched) && password.errors">
+                            <div class="invalid-feedbackn">
+                                <i class="fa fa-times"></i>
+                            </div>
+                            <div *ngIf="password.errors?.required" class="invalid-feedback">
+                                Enter
+                                a Password
+                            </div>
+                            <div *ngIf="password.errors?.minlength" class="invalid-feedback">
+                                Should
+                                be at least 3 characters
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class=" action-button-container mt-3 text-center">
+                    <button type="submit" class="btn btn-medium btn-warning btn-block" [disabled]="!loginForm.valid"
+                        (click)="login(loginForm)">
+                        <span>Login</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

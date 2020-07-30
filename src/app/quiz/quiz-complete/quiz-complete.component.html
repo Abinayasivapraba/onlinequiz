@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 text-center">
+      <div class="card mt-5">
+        <div class="card-body mx-auto">
+          <h2>Below are your chosen answers</h2>
+          <div class="col-lg-12 my-2" *ngFor="let item of selectedAnswers">
+            <div>{{item.question}}</div>
+            <div class="form-group">
+              <label for="">Options </label>
+              <label class="form-check-label container" *ngFor="let opItem of item.option;index as i">
+                <input class="form-check-input" [name]="opItem.name + 1" type="radio" [value]="opItem.name" [checked]="opItem.selected"
+                  disabled>
+                {{opItem.name}}
+                <span class="checkmark"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
